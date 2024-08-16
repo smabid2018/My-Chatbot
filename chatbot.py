@@ -78,19 +78,20 @@ def collect_user_info():
 
     # Display the form if it hasn't been submitted yet
     if not st.session_state.submitted:
-        st.write("Please submit your information.")
-        with st.form("user_info_form"):
+        form_placeholder = st.empty()
+        with form_placeholder.form("user_info_form"):
+            st.write("Please submit your information.")
             name = st.text_input("Name")
             phone = st.text_input("Phone Number")
             email = st.text_input("Email")
-            submitted = st.form_submit_button("Submit")
+            st.session_state.submitted = st.form_submit_button("Submit")
 
-            if submitted and name and phone and email:
-                st.session_state.submitted = True  # Mark the form as submitted
-                st.session_state.user_info = {
-                    "name": name, "phone": phone, "email": email}
-                st.success(
-                    "We successfully recieved your Contact Information!")
+        if st.session_state.submitted and name and phone and email:
+            form_placeholder.empty()
+            st.session_state.user_info = {
+                "name": name, "phone": phone, "email": email}
+            st.success(
+                "We successfully recieved your Contact Information!")
 
     # Display the user info after form submission
     if st.session_state.submitted:
