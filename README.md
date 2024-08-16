@@ -1,19 +1,108 @@
-# My-Chatbot
-ScreenShots:
-![Screenshot 2024-08-16 000735](https://github.com/user-attachments/assets/b356a487-d097-4630-a648-1f1500200f52)
+# My Chatbot
 
+## Overview
 
-![Screenshot 2024-08-16 000803](https://github.com/user-attachments/assets/4c6fb5ea-93b9-40f7-bceb-f2596a8c5b0f)
+My Chatbot is an AI-powered conversational agent designed to answer user queries based on PDF documents. The chatbot leverages LangChain, Google Generative AI, and FAISS to provide detailed answers by analyzing the content of uploaded PDF files. Users can also provide their contact information if they request a callback or further assistance.
 
+## Features
 
-![Screenshot 2024-08-16 000819](https://github.com/user-attachments/assets/5ea34a4f-3ce5-431b-8bec-86e36c0c4066)
+- **PDF Processing**: Upload multiple PDF files, and the chatbot will extract and process the text for later querying.
+- **Contextual Question Answering**: Ask questions related to the uploaded PDF files, and the chatbot will provide answers based on the content.
+- **Contact Information Form**: Users can submit their contact information if they ask the chatbot to call them.
+- **Powered by Google Generative AI**: Utilizes Google's Gemini model to generate accurate and detailed responses.
 
-![Screenshot 2024-08-16 002955](https://github.com/user-attachments/assets/8d984f7d-7d23-43cf-9cf7-6d7b6dccc8dc)
+## How It Works
 
+1. **PDF Upload**: Users can upload multiple PDF files via the sidebar.
+2. **Text Extraction and Processing**: The text from the PDF files is extracted and split into manageable chunks for processing.
+3. **Vector Store Creation**: A FAISS vector store is created from the text chunks, enabling efficient similarity search when answering questions.
+4. **Question Answering**: Users can input questions, and the chatbot will search for relevant context within the processed PDFs to generate an answer.
+5. **User Interaction**: If a user asks the chatbot to contact them, a form is presented to collect their name, phone number, and email address.
 
-![Screenshot 2024-08-16 003014](https://github.com/user-attachments/assets/5ce7821b-f2ff-4078-b300-2b9622a75856)
+## Getting Started
 
-![Screenshot 2024-08-16 003048](https://github.com/user-attachments/assets/8a42a922-c088-47e4-8ce2-556a61061823)
+### Prerequisites
 
+Before you begin, ensure you have the following:
 
-![Screenshot 2024-08-16 003133](https://github.com/user-attachments/assets/d4c76ca6-48fb-4a26-9b32-71847cee9b29)
+- Python 3.8 or later
+- A Google API key for accessing Google Generative AI services
+
+### Installation
+
+1. **Clone the repository**:
+
+   ```bash
+   git clone https://github.com/smabid2018/My-Chatbot.git
+   cd My-Chatbot
+   ```
+
+2. **Create a virtual environment**:
+
+   ```bash
+   python -m venv venv
+   ```
+
+3. **Activate the virtual environment**:
+
+   - On Windows:
+     ```bash
+     venv\Scripts\activate
+     ```
+   - On macOS/Linux:
+     ```bash
+     source venv/bin/activate
+     ```
+
+4. **Install the required packages**:
+
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+5. **Set up environment variables**:
+   - Create a `.env` file in the root directory and add your Google API key:
+     ```plaintext
+     GOOGLE_API_KEY=your-google-api-key
+     ```
+
+### Usage
+
+1. **Run the application**:
+
+   ```bash
+   streamlit run chatbot.py
+   ```
+
+2. **Upload PDF files**:
+
+   - Use the sidebar to upload one or more PDF files.
+   - Click the "Submit & Process" button to process the PDFs.
+
+3. **Ask questions**:
+
+   - Enter a question related to the content of the PDFs in the text input box.
+   - If the question is related to contacting you (e.g., "call me"), the chatbot will ask for your contact information.
+
+4. **View responses**:
+   - The chatbot will provide detailed answers based on the content of the uploaded PDFs.
+
+### Example
+
+Here’s how to interact with the chatbot:
+
+- **Upload PDFs**: Drag and drop PDF files into the sidebar uploader.
+- **Ask a Question**: Type a question like "What is the main topic of the first document?".
+- **Contact Request**: If you type "call me", the chatbot will prompt you to enter your contact details.
+
+## Contributing
+
+If you'd like to contribute to this project, please follow these steps:
+
+1. Fork the repository.
+2. Create a new branch for your feature or bugfix.
+3. Submit a pull request with a clear description of your changes.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
